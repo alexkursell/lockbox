@@ -54,8 +54,8 @@ void loop() {
       valid = 1;
       for (int i=2;i<length;i++) {
         if ( abs(((knocks[i]-knocks[i-1]) - pattern[i-1]*base_tempo)) > epsilon) { 
-	  valid = 0;
-	  break;	 	
+	  	   valid = 0;
+	  	   break;	 	
 	}
       }
       if (valid) {

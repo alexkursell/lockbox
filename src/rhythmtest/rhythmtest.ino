@@ -44,7 +44,6 @@ void setup() {
 void loop() {
   int sensorValue = analogRead(MIC_PIN);
   // print out the value you read:
-  //Serial.println("test");
 
   if(abs(sensorValue - MIC_AVG) > MIC_DELTA){
     knocks[index] = count;
@@ -54,9 +53,9 @@ void loop() {
       valid = 1;
       for (int i=2;i<length;i++) {
         if ( abs(((knocks[i]-knocks[i-1]) - pattern[i-1]*base_tempo)) > epsilon) { 
-	  	   valid = 0;
-	  	   break;	 	
-	}
+          valid = 0;
+          break;	 	
+        }
       }
       if (valid) {
         if (is_locked) open_box();

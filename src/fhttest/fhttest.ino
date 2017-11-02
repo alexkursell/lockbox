@@ -58,7 +58,7 @@ void loop() {
 
     int val = fht_lin_out[id];
     
-    if(val > 100){
+    if(id >= 20 && val > 200){
       Serial.print(id); // send out the data
       Serial.print(" : ");
       Serial.println(val);

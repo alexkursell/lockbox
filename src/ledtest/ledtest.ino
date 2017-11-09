@@ -1,6 +1,6 @@
-#define LED_R_PIN A1
-#define LED_G_PIN A2
-#define LED_B_PIN A3
+#define LED_R_PIN 5
+#define LED_G_PIN 9
+#define LED_B_PIN 11
 
 void set_color(int red_value, int green_value, int blue_value) {
   analogWrite(LED_R_PIN,red_value);

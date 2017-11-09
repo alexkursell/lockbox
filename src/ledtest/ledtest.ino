@@ -1,6 +1,6 @@
-#define LED_R_PIN A1
-#define LED_G_PIN A2
-#define LED_B_PIN A3
+#define LED_R_PIN 5
+#define LED_G_PIN 9
+#define LED_B_PIN 11
 
 void set_color(int red_value, int green_value, int blue_value) {
   analogWrite(LED_R_PIN,red_value);
@@ -15,26 +15,27 @@ void setup() {
   Serial.begin(9600);
 }
 
-void loop() { 
-  set_color(255,0,0);
-  Serial.println("Red");
-  delay(1000);
-  set_color(0,255,0);
+void loop() {
+  
+  //set_color(255,0,0);
+  //Serial.println("Red");
+  //delay(1000);
+  //set_color(0,255,0);
+  //Serial.println("Green");
+  //delay(1000);
+  set_color(0,0,255);
   Serial.println("Blue");
   delay(1000);
-  set_color(0,0,255);
-  Serial.println("Green");
-  delay(1000);
-  set_color(255,255,0);
+  /*set_color(255,255,0);
   Serial.println("Yellow");
   delay(1000);
   set_color(255,0,255);
   Serial.println("Purple");
   delay(1000);
-  set_color(255,128,0);
+  set_color(255,173,0);
   Serial.println("Orange?");
   delay(1000);
   set_color(255,255,255);
   Serial.println("White");
-  delay(1000);
+  delay(1000);*/
 }

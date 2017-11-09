@@ -1,3 +1,7 @@
+/*
+ * Servo library, contains functions to open and close the lock.
+ */
+
 #include <Servo.h> 
 
 

@@ -1,4 +1,6 @@
-
+/*
+ * LED library, contains functions for setting the color of the RGB LED
+ */
 
 void led_init(){
   pinMode(LED_R_PIN,OUTPUT);

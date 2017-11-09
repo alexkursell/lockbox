@@ -1,3 +1,7 @@
+/*
+ * Main file, contains the "glue logic" that uses the fuctions from the libraries.
+ */
+
 #define LOCK_POSITION 2000
 #define OPEN_POSITION 1200
 

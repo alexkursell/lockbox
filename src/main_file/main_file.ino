@@ -16,18 +16,22 @@
 #define MIC_AVG 360
 #define MIC_DELTA 350
 
+int i = 60;
+
 void setup() {
   servo_init();
   led_init();
   freq_init();
   Serial.begin(9600);
+  set_color(0, 0, 255);
+  open_box();
   
 }
 
 void loop() {
-  //sensorValue = analogRead(MIC_PIN); 
-  open_box();
-  int i = freq_listen();
+  //set_color(i * 3, i * 3, i * 3);
+  //sensorValue = analogRead(MIC_PIN);
+  i = freq_listen();
   Serial.println(i);
-  set_color(i * 3, i * 3, i * 3);
+  
 }

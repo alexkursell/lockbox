@@ -16,7 +16,7 @@ visualizing the data.
 
 
 void setup() {
-  Serial.begin(115200); // use the serial port
+  Serial.begin(9600); // use the serial port
   TIMSK0 = 0; // turn off timer0 for lower jitter
   //ADCSRA = 0xe5; // set the adc to free running mode
    ADCSRA |= bit (ADPS0) | bit (ADPS1) | bit (ADPS2) | (1 << ADSC) | (1 << ADEN);

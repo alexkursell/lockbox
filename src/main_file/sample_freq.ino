@@ -22,7 +22,7 @@ visualizing the data.
 void freq_init() {
   //TIMSK0 = 0; // turn off timer0 for lower jitter
   //ADCSRA = 0xe5; // set the adc to free running mode
-   ADCSRA |= bit (ADPS0) | bit (ADPS1) | bit (ADPS2) | (1 << ADSC) | (1 << ADEN);
+  ADCSRA |= bit (ADPS0) | bit (ADPS1) | bit (ADPS2) | (1 << ADSC) | (1 << ADEN);
   ADCSRA |= (1 << ADEN); //enable ADC
   ADCSRA |= (1 << ADSC); //start ADC measurements
   ADMUX = 0x40; // use adc0
@@ -30,6 +30,15 @@ void freq_init() {
 }
 
 int freq_listen(){
+  //TIMSK0 = 0; // turn off timer0 for lower jitter
+  //ADCSRA = 0xe5; // set the adc to free running mode
+  ADCSRA |= bit (ADPS0) | bit (ADPS1) | bit (ADPS2) | (1 << ADSC) | (1 << ADEN);
+  ADCSRA |= (1 << ADEN); //enable ADC
+  ADCSRA |= (1 << ADSC); //start ADC measurements
+  ADMUX = 0x40; // use adc0
+  DIDR0 = 0x01; // turn off the digital input for adc0
+
+  
   while(1) { // reduces jitter
     cli();  // UDRE interrupt slows this way down on arduino1.0
     for (int i = 0 ; i < FHT_N ; i++) { // save 256 samples
@@ -62,6 +71,7 @@ int freq_listen(){
     int val = fht_lin_out[id];
     
     if(id >= 20 && val > 200){
+      Serial.println(val);
       return id;
     }
   }

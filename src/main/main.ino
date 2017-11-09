@@ -1,8 +1,3 @@
-#include "led.h"
-#include "servo.h"
-#include "pattern.h"
-
-
 void setup() {
   
 }

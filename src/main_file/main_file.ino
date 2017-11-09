@@ -19,22 +19,15 @@
 void setup() {
   servo_init();
   led_init();
+  freq_init();
   Serial.begin(9600);
+  
 }
 
 void loop() {
   //sensorValue = analogRead(MIC_PIN); 
-  /*if(abs(sensorValue - MIC_AVG) > MIC_DELTA){
-    Serial.println("KNOCK");
-    num_knocks += 1;
-    last_knock_time = millis();
-    Serial.println(num_knocks);
-    delay(100);
-  }*/ 
-  set_color(0,255,0);
   open_box();
-  delay(2000);
-  set_color(255,0,0);
-  lock_box();
-  delay(2000);
+  int i = freq_listen();
+  Serial.println(i);
+  set_color(i * 3, i * 3, i * 3);
 }

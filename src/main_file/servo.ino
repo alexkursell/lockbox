@@ -9,15 +9,20 @@ Servo servo;
 
 void servo_init(){
   pinMode(SERVO_PIN, OUTPUT);
-  servo.attach(SERVO_PIN);
 }
 
 void lock_box(){
+  servo.attach(SERVO_PIN);
   servo.writeMicroseconds(LOCK_POSITION);
+  delay(1000);
+  servo.detach();
 }
 
 void open_box(){
+  servo.attach(SERVO_PIN);
   servo.writeMicroseconds(OPEN_POSITION);
+  delay(1000);
+  servo.detach();
 }
 
 

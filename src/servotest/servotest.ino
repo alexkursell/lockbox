@@ -6,7 +6,7 @@
 #define MIC_PIN A0
 
 
-const Servo servo;
+Servo servo;
 
 void lock_box(){
   servo.writeMicroseconds(LOCK_POSITION);

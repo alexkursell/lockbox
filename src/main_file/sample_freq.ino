@@ -44,10 +44,10 @@ int freq_listen(){
 
     int val = fht_lin_out[id];
     
-    if(id >= 20){
-      //Serial.println(val);
+    if(id >= 15){
       return id;
     }
+    else return 0;
   }
 }
 

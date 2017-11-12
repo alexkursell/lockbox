@@ -19,7 +19,7 @@ int knocks[5];
 int length = 5;
 int count = 0;
 int index = 0;
-int epsilon = 20;
+int epsilon = 200;
 int valid = 0;
 
 void lock_box(){
@@ -66,7 +66,7 @@ void loop() {
       delay(1000);
     }
     delay(50);
-    count=(count+5)$1000000;
+    count=(count+5)%1000000;
   }
   delay(10); 
   count = (count+1)%1000000;

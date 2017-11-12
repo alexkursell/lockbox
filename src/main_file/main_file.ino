@@ -14,9 +14,10 @@
 #define LED_B_PIN 11
 
 #define MIC_AVG 360
-#define MIC_DELTA 50 //lowered significantly
+#define MIC_DELTA 10
 
 int i = 0;
+int prev_i;
 double freq;
 int silence_buffer = 0;
 
@@ -37,10 +38,13 @@ void loop() {
   sensorValue = analogRead(MIC_PIN);
   if (abs(sensorValue-MIC_AVG) > MIC_DELTA) {
     silence_buffer = 0;
+    prev_i = i;
     i = freq_listen();
-    freq = (double)(i)*17.6;//tuned to the standard of 440.0hz for A4
-    //if (i_prev != 0 and i != 0) 
-    Serial.println(freq); 
+    if (i != 0) { 
+      freq = (double)(i)*17.6;//tuned to the standard of 440.0hz for A4
+      Serial.println(freq);
+    }
+    else i = prev_i;
   } else silence_buffer++; //prevents LED flickering (because analog input is sinusodal)
   if (silence_buffer > 100) {
     i = 15;

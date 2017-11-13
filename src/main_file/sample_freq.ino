@@ -19,6 +19,8 @@ visualizing the data.
 #include <FHT.h> // include the library
 
 
+const int l_inverse_2 = 1.0/log(2.0);
+
 void freq_init() {
 }
 
@@ -50,4 +52,13 @@ int freq_listen(){
     else return 0;
   }
 }
+
+double log_2(double n){
+    return log(n) * l_inverse_2;
+
+double freq_to_note(double freq){
+    return 12.0 * log_2(freq);
+
+
+
 

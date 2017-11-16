@@ -22,13 +22,29 @@ visualizing the data.
 const int l_inverse_2 = 1.0/log(2.0);
 
 void freq_init() {
+  ADCSRA &= ~(bit (ADPS0) | bit (ADPS1) | bit (ADPS2));
+  ADCSRA |= bit (ADPS0) | bit (ADPS2) | (1 << ADSC) | (1 << ADEN);
+  ADCSRA |= (1 << ADEN); //enable ADC
+  ADCSRA |= (1 << ADSC); //start ADC measurements
+  ADMUX = 0x40; // use adc0
+  DIDR0 = 0x01; // turn off the digital input for adc0
 }
 
-int freq_listen(){
-  while(1) { // reduces jitter
-    for (int i = 0 ; i < FHT_N ; i++) { // save 256 samples
-      fht_input[i] = analogRead(MIC_PIN);
+double freq_listen(){
+  while(1) {
+    for (int i = 0 ; i < FHT_N ; i++) {
+      while(!(ADCSRA & 0x10));
+      ADCSRA |= bit (ADPS0) | bit (ADPS1) | bit (ADPS2) | (1 << ADSC) | (1 << ADEN);
+      byte m = ADCL; // fetch adc data
+      byte j = ADCH;
+
+      int k = (j << 8) | m; // form into an int
+      k -= 0x0200; // form into a signed int
+      k <<= 6; // form into a 16b signed int
+
+      fht_input[i] = k; // put real data into bins
     }
+
     fht_window(); // window the data for better frequency response
     fht_reorder(); // reorder the data before doing the fht
     fht_run(); // process the data in the fht
@@ -38,16 +54,17 @@ int freq_listen(){
     
 
     for(int i = 4; i < 128; i++){
-     // Serial.print(i);
-      //Serial.print(" : ");
-      //Serial.println(fht_lin_out[i]);
+     //Serial.print(i);
+     //Serial.print(" : ");
+     //Serial.println(fht_lin_out[i]);
       id = fht_lin_out[i] > fht_lin_out[id] ? i : id; 
     }
 
     int val = fht_lin_out[id];
+    //Serial.print("val :");
     
-    if(id >= 15){
-      return id;
+    if(id >= 13 && val > 300){
+      return ((double) id) * 17.6;
     }
     else return 0;
   }
@@ -55,9 +72,11 @@ int freq_listen(){
 
 double log_2(double n){
     return log(n) * l_inverse_2;
+}
 
 double freq_to_note(double freq){
     return 12.0 * log_2(freq);
+}
 
 
 

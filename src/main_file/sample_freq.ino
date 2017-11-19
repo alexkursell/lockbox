@@ -31,6 +31,9 @@ void freq_init() {
 }
 
 double freq_listen(){
+  int minl;
+  int maxl;
+  
   while(1) {
     for (int i = 0 ; i < FHT_N ; i++) {
       while(!(ADCSRA & 0x10));
@@ -42,6 +45,9 @@ double freq_listen(){
       k -= 0x0200; // form into a signed int
       k <<= 6; // form into a 16b signed int
 
+      //minl = min(minl, k);
+      //maxl = max(maxl, k);
+      
       fht_input[i] = k; // put real data into bins
     }
 
@@ -50,6 +56,8 @@ double freq_listen(){
     fht_run(); // process the data in the fht
     fht_mag_lin(); // take the output of the fht
     int id = -1;
+
+    //Serial.println(maxl - minl);
 
     
 
@@ -63,7 +71,7 @@ double freq_listen(){
     int val = fht_lin_out[id];
     //Serial.print("val :");
     
-    if(id >= 13 && val > 300){
+    if(id >= 13 && val > 200 /*&& maxl - minl > 11000*/){
       return ((double) id) * 17.6;
     }
     else return 0;
@@ -71,7 +79,7 @@ double freq_listen(){
 }
 
 double log_2(double n){
-    return log(n) * l_inverse_2;
+    return n == 0 ? 0 : log(n) * l_inverse_2;
 }
 
 double freq_to_note(double freq){

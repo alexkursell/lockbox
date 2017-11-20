@@ -70,7 +70,7 @@ double freq_listen(){
 
     int val = fht_lin_out[id];
     //Serial.print("val :");
-    if(id >= 15 && val > 250 /*&& maxl - minl > 11000*/){
+    if(id >= 15 && val > 400 /*&& maxl - minl > 11000*/){
       //Serial.println(id);
       return ((double) id) * 17.6;
     }

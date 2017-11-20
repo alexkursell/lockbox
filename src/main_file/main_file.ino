@@ -74,10 +74,10 @@ bool near(double a, double b){
 }
 
 void end_note(double note, double ntime){
+  int t =millis();
   if(near(note, 0)) return;
 
   if(note_index >= 29){
-    Serial.println("MOVEBACK");
     for(int i = 1; i < 30; i++){
       note_buffer[i - 1] = note_buffer[i];
     }
@@ -100,28 +100,44 @@ void end_note(double note, double ntime){
   //Serial.print(" : ");
   //Serial.println(note_buffer[note_index].time);
 
-  for(int i = 0; i < 30; i++){
+  /*for(int i = 0; i < 30; i++){
     Serial.print(note_buffer[i].time);
     Serial.print(" ");
-  }
-  Serial.println(dist(hot_cross_buns, 
+  }*/
+
+  double score = dist(hot_cross_buns, 
                       note_buffer, 
-                      sizeof(hot_cross_buns)/sizeof(struct Note),
-                      sizeof(note_buffer)/sizeof(struct Note),
-                      10));
+                      17,//sizeof(hot_cross_buns)/sizeof(struct Note),
+                      30, //sizeof(note_buffer)/sizeof(struct Note),
+                      0.5);
+  Serial.println(score);
+  if(score < 12.0){
+    set_color(0, 255, 0);
+    /*for(int i = 0; i < 30; i++){
+      note_buffer[i] = {0, 0};
+    }*/
+    
+  }
+  else{
+    set_color(255, 0, 0);
+  }
+
+  Serial.println(millis() -t);
+  
 }
 
 void loop() { 
+    
     //Note just ended into silence
-    if(silence_buffer == 3){
+    if(silence_buffer == 1){
       end_note(prev_note, millis() - prev_time);
     }
     
     //No note currently playing
-    if(silence_buffer >= 3){
+    if(silence_buffer >= 1){
       prev_note = 0;
       prev_time = millis();
-      set_color(0, 0, 0);
+      //set_color(0, 0, 0);
     }
 
     freq = freq_listen();
@@ -147,7 +163,7 @@ void loop() {
         end_note(prev_note, millis() - prev_time);
       }
 
-      display_note(note);
+      //display_note(note);
       prev_note = note;
       prev_time = millis();
     }

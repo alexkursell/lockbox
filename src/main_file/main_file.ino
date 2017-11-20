@@ -111,14 +111,16 @@ void end_note(double note, double ntime){
                       30, //sizeof(note_buffer)/sizeof(struct Note),
                       0.5);
   Serial.println(score);
-  if(score < 12.0){
+  if(score < 10.0){
     set_color(0, 255, 0);
-    /*for(int i = 0; i < 30; i++){
+    open_box();
+    for(int i = 0; i < 30; i++){
       note_buffer[i] = {0, 0};
-    }*/
+    }
     
   }
   else{
+    lock_box();
     set_color(255, 0, 0);
   }
 

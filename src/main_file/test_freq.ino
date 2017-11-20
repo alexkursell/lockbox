@@ -50,6 +50,6 @@ double dist(struct Note *s1, struct Note *s2, int n1, int n2, double skip_penalt
 double comp(struct Note a, struct Note b){
   double diffpitch = a.pitch - b.pitch;
   double difftimes = a.time - b.time;
-  //Serial.println(diffpitch * 100);
-  return fabs(diffpitch) * 100 + fabs(difftimes);
+  //Serial.println(difftimes);
+  return fabs(diffpitch) * 25 + fabs(difftimes);
 }

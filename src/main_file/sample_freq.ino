@@ -45,8 +45,8 @@ double freq_listen(){
       k -= 0x0200; // form into a signed int
       k <<= 6; // form into a 16b signed int
 
-      //minl = min(minl, k);
-      //maxl = max(maxl, k);
+      minl = min(minl, k);
+      maxl = max(maxl, k);
       
       fht_input[i] = k; // put real data into bins
     }
@@ -70,8 +70,8 @@ double freq_listen(){
 
     int val = fht_lin_out[id];
     //Serial.print("val :");
-    
-    if(id >= 13 && val > 200 /*&& maxl - minl > 11000*/){
+    if(id >= 15 && val > 250 /*&& maxl - minl > 11000*/){
+      //Serial.println(id);
       return ((double) id) * 17.6;
     }
     else return 0;

@@ -4,16 +4,14 @@
  * detemine if they are the same tune.
  */
 
- 
-struct Note{
-	double pitch;
-	double time;
-};
+double initold[31]; //= (double*) malloc(sizeof(double) * 31);
+double initnew[31]; //= (double*) malloc(sizeof(double) * 31);
+
 
 double dist(struct Note *s1, struct Note *s2, int n1, int n2, double skip_penalty){
+    double *olda = (double *) initold;
+    double *newa = (double * ) initnew;
     
-    double *olda = (double*) malloc(sizeof(double) * (n2 + 1));
-    double *newa = (double*) malloc(sizeof(double) * (n2 + 1));
     double *tmp;
     
     int omin;
@@ -49,10 +47,7 @@ double dist(struct Note *s1, struct Note *s2, int n1, int n2, double skip_penalt
     }
 
     double ans = olda[n2];
-    free(olda);
-    free(newa);
-
-    return ans;
+    return ans *10000000;
 }
 
 

@@ -4,6 +4,8 @@
  */
 
 
+
+
 /*
  * Sets up analog input registers for faster input.
  */
@@ -54,9 +56,6 @@ double freq_listen(){
   //Starts at 4 because very low frequencies always have massive intensities.
   int id = -1;
   for(int i = 4; i < 128; i++){
-   //Serial.print(i);
-   //Serial.print(" : ");
-   //Serial.println(fht_lin_out[i]);
     id = fht_lin_out[i] > fht_lin_out[id] ? i : id; 
   }
 

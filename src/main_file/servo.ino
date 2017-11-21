@@ -5,6 +5,7 @@
 //Create servo object
 Servo servo;
 
+//Flag to store whether the lock is locked or not.
 bool is_locked = false;
 
 void servo_init(){

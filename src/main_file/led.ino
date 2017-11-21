@@ -25,9 +25,9 @@ void set_color(int red_value, int green_value, int blue_value) {
  */
 
 void display_note(double note){
-    int red   = (int) 128 * (sin(period_term*(freq- 95) + half_pi) + 1);
-    int green = (int) 128 * (sin(period_term*(freq- 111) + half_pi) + 1);
-    int blue  = (int) 128 * (sin(period_term*(freq- 127) + half_pi) + 1);
+    int red   = (int) 128 * (sin(period_term*(note - 95) + half_pi) + 1);
+    int green = (int) 128 * (sin(period_term*(note - 111) + half_pi) + 1);
+    int blue  = (int) 128 * (sin(period_term*(note - 127) + half_pi) + 1);
     set_color(red, green, blue);
 }
 

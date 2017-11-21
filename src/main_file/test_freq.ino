@@ -74,6 +74,6 @@ double comp(struct Note a, struct Note b){
   double diffpitch = a.pitch - b.pitch;
   double difftimes = a.time - b.time;
   
-  return fabs(diffpitch) * PITCH_DISTANCE_COST_MULTIPLIER 
-       + fabs(difftimes) * TIME_DISTANCE_COST_MULTIPLIER;
+  return fabs(diffpitch) * PITCH_DIFFERENCE_COST_MULTIPLIER 
+       + fabs(difftimes) * TIME_DIFFERENCE_COST_MULTIPLIER;
 }

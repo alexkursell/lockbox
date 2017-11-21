@@ -2,19 +2,44 @@
  * Main file, contains the "glue logic" that uses the fuctions from the libraries.
  */
 
-#define LOCK_POSITION 2000
-#define OPEN_POSITION 1200
+//Library includes
+#include <FHT.h> //To perform a Fast Hartley Transform on the microphone samples
+#include <Servo.h> //To open and close the lock
+#include <math.h> //For log function and sin function (note conversion and display)
 
+//Define hardware locations
 #define SERVO_PIN 3
 #define MIC_PIN A0
-
-
 #define LED_R_PIN 5
 #define LED_G_PIN 9
 #define LED_B_PIN 11
 
 #define MIC_AVG 360
 #define MIC_DELTA 25
+
+//Servo position constants
+#define LOCK_POSITION 2000
+#define OPEN_POSITION 1200
+
+
+//FHT library constants
+#define LIN_OUT 1 // use the log output function
+#define FHT_N 256 // set to 256 point fht
+#define SCALE 128 // set scaling to 128
+
+//Frequency detection constants
+#define MIN_
+#define MIN_FREQ_BIN 15
+#define MIN_FREQ_INTENSITY 400
+#define BIN_TO_FREQ_RATIO 17.6
+
+//Sequence comparaison constants
+#define SKIP_REFERENCE_NOTE_COST 0.5 //Cost of skipping a reference note (Option 1)
+#define SKIP_TEST_NOTE_COST 0.3 //Cost of skipping a test note (Option 2)
+#define PITCH_DIFFERENCE_COST_MULTIPLIER 25 //Relative importance of pitch difference
+#define TIME_DIFFERENCE_COST_MULTIPLIER 1 //Relative importance of time difference
+#define ACCEPTABLE_DISTANCE 10.0 //Maximum acceptable distance for lock to open.
+
 
 struct Note{
   double pitch;
@@ -108,8 +133,8 @@ void end_note(double note, double ntime){
   double score = dist(hot_cross_buns, 
                       note_buffer, 
                       17,//sizeof(hot_cross_buns)/sizeof(struct Note),
-                      30, //sizeof(note_buffer)/sizeof(struct Note),
-                      0.5);
+                      30 //sizeof(note_buffer)/sizeof(struct Note)
+                      );
   Serial.println(score);
   if(score < 10.0){
     set_color(0, 255, 0);

@@ -25,7 +25,7 @@ void freq_init() {
  * finds dominant frequency and either returns that frequency
  * or 0.0 if none is found.
  */
-double freq_listen(){
+double get_freq(){
   int minl;
   int maxl;
   
@@ -70,25 +70,6 @@ double freq_listen(){
 }
 
 
-
-//Inverse of log(2). Used to change log base in frequency conversion function.
-const int l_inverse_2 = 1.0/log(2.0);
-
-/*
- * Log 2 function.
- * Modified so that 0 maps to 0.
- */
-double log_2(double n){
-    return n == 0 ? 0 : log(n) * l_inverse_2;
-}
-
-/*
- * Convert frequency in Hz to a "note".
- * Formula is note = 12*log_2(frequency).
- */
-double freq_to_note(double freq){
-    return 12.0 * log_2(freq);
-}
 
 
 

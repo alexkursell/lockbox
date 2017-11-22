@@ -29,11 +29,9 @@
 #define BIN_TO_FREQ_RATIO 17.6 //Converts frequency bin index to Hz.
 #define MAXIMUM_SILENT_SAMPLES 25 //See loop().
 
-//Sequence comparaison constants
-#define SKIP_REFERENCE_NOTE_COST 0.5 //Cost of skipping a reference note (Option 1)
-#define SKIP_TEST_NOTE_COST 0.3 //Cost of skipping a test note (Option 2)
-#define PITCH_DIFFERENCE_COST_MULTIPLIER 25 //Relative importance of pitch difference
-#define TIME_DIFFERENCE_COST_MULTIPLIER 1 //Relative importance of time difference
+
+//Frequency comparaison constants
+#define SKIP_PENALTY -3
 #define ACCEPTABLE_DISTANCE 10.0 //Maximum acceptable distance for lock to open.
 
 //Defining colors for better readability
@@ -46,8 +44,6 @@
 //Sequence sizes
 #define NOTE_BUFFER_SIZE 128 //We store the last n notes that were registered.
 
-#define MIC_AVG 360
-#define MIC_DELTA 25
 
 //int master_song[] = {45, 45, 50, 49, 52, 51, 53, 53, 53, 49, 50, 50, 53, 53, 54, 56, 0};
 //int master_song[] = {42, 46, 45, 45, 46, 45, 50, 50, 50, 50, 50, 48, 48, 48, 53, 46};
@@ -55,9 +51,15 @@
 int master_song[] = {0, 0, 0, 0, 6, 6, 6, 7, 7, 7, 9, 9, 9, 9, 7, 7}; //twinkle twinkle little star
 const int MASTER_SONG_SIZE = sizeof(master_song)/sizeof(int);
 
-int this_song[16];
-
+int this_song[16]; //Eventually where the recorded and processed tune is stored.
 bool caught = false; //stop box from liking arpeggios and single note-tunes
+int freq_raw; //Store raw frequency reading
+double note;  //Store the processed note value.
+int note_index = 0; //Index in notes[] we are currently writing to
+double notes[NOTE_BUFFER_SIZE];
+int silence_buffer = 0; //Counts number of samples since we last heard an actual note
+int score = 0; //How well does it compare to the master song?
+
 
 void setup() {
   Serial.begin(9600);
@@ -66,13 +68,6 @@ void setup() {
   led_init();
   //relativize(master_song,master_song_size);
 }
-
-int freq_raw; //Store raw frequency reading
-double note;  //Store the processed note value.
-int note_index = 0;
-double notes[NOTE_BUFFER_SIZE];
-int silence_buffer = 0; //Counts number of samples since we last heard an actual note
-int score = 0;
 
 void loop() {
   //Get a new frequency value
@@ -95,7 +90,10 @@ void loop() {
 
     //If it isn't flush the buffer.
     else {
+      set_color(COLOR_RED);
       flush_notes();
+      delay(1000);
+      set_color(COLOR_NONE);
       note_index = 0;
     }
     Serial.println(note); 
@@ -134,6 +132,4 @@ void loop() {
     note_index = 0;
     silence_buffer = 0;
   }
-  delay(0);
 }
-

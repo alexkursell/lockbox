@@ -25,7 +25,7 @@ void freq_init() {
  * finds dominant frequency and either returns that frequency
  * or 0.0 if none is found.
  */
-double get_freq(){
+float get_freq(){
   int minl;
   int maxl;
   
@@ -64,7 +64,7 @@ double get_freq(){
   
   //Check against some conditions to avoid false positives.
   if(id >= MIN_FREQ_BIN && val > MIN_FREQ_INTENSITY){
-    return ((double) id) * BIN_TO_FREQ_RATIO;
+    return ((float) id) * BIN_TO_FREQ_RATIO;
   }
   else return 0;
 }

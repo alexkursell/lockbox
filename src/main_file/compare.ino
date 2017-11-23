@@ -81,15 +81,9 @@ void relativize(int a[],int n) {
     Serial.print(a[i]);
     Serial.print(", ");
   }
-  /*for (int i=0; i<n;i++) {
-    a[i]-=a[i+1s];
-  }*/
 }
 
 void process(double notes[], int old_sum) {
-  printf("start\n");
-  Serial.println(old_sum);
-
 
   double new_notes[128];
   int new_lengths[128];
@@ -97,10 +91,13 @@ void process(double notes[], int old_sum) {
   int length = 0;
   int new_sum = 0;
   
+  /*
+   *Find all frequencies that appear only once and assimilate them into more prevalent ones
+   *Take all major frequencies and catalogue them in an array that stores the frequency value and its length
+   */
   for (int i=0;i<old_sum;i++) {
     if (i !=0 && notes[i] != notes[i+1] && notes[i] != notes[i-1]) {
       notes[i] = closest(notes[i],notes[i-1],notes[i+1]);
-    //printf("%g %g\n",notes[i],closerst(notes[i],notes[i-1],notes[i+1]));
     }
     else if (i == 0 && notes[i] != notes[i+1]) notes[i] = notes[i+1];
     else if (i == old_sum-1 && notes[i] != notes[i-1]) notes[i] = notes[i-1];
@@ -112,17 +109,23 @@ void process(double notes[], int old_sum) {
       j++;
      }
     length++;
-    //Serial.println(round(notes[i]));
   }
-  if (j < 8) {
+  if (j < 3) {
+    /*
+    *If there are less than 3 distinct notes, automatically reject the tune 
+    */
     caught = true;
-    Serial.println("caught!");
     return;
   }
+  /*
+  *Take each length from the old array and find its proportion in a 16 length array
+  */
   for (int i=0;i<j;i++) {
     new_lengths[i] = ((double)(new_lengths[i])/((double)(old_sum))*MASTER_SONG_SIZE);
   }
-
+  /*
+  *Write the tune in a size 16 array
+  */
   new_sum = j;
   j=0;
   for (int i=0;i<MASTER_SONG_SIZE;i++) {
@@ -130,10 +133,6 @@ void process(double notes[], int old_sum) {
     new_lengths[j]-=1;
     if (new_lengths[j] <= 0) j++;
   if (j>=new_sum) j--;
-  }
-  for (int i=0;i<MASTER_SONG_SIZE;i++) {
-    //Serial.print(this_song[i]);
-    //Serial.print(", ");
   }
 }
 

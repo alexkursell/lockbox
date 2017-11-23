@@ -66,6 +66,7 @@ void setup() {
   Serial.println("start");
   freq_init();
   led_init();
+  lock_box();
   //relativize(master_song,master_song_size);
 }
 
@@ -116,7 +117,7 @@ void loop() {
     //The input was close enough to the master song.
     if (score > ACCEPTABLE_DISTANCE) {
       set_color(COLOR_GREEN);
-      open_box();
+      switch_box();
       delay(1000);
       set_color(COLOR_NONE);
     }
@@ -124,7 +125,7 @@ void loop() {
     //The input failed the test!
     else {
       set_color(COLOR_RED);
-      lock_box();
+      //lock_box();
       delay(1000);
       set_color(COLOR_NONE);
     }

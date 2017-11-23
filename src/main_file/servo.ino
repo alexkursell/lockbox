@@ -12,6 +12,11 @@ void servo_init(){
   pinMode(SERVO_PIN, OUTPUT);
 }
 
+void switch_box(){
+  if(is_locked) open_box();
+  else lock_box();
+}
+
 void lock_box(){
   if(!is_locked){ //Only try to lock box if not already locked.
     servo.attach(SERVO_PIN);

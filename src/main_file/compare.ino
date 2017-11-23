@@ -34,9 +34,6 @@ int max_of_3(int a, int b, int c) {
   return max;
 }
 
-
-char *olds = (char *) malloc((MASTER_SONG_SIZE + 1) * sizeof(char));
-char *news = (char *) malloc((MASTER_SONG_SIZE + 1) * sizeof(char));
 /*  
  * Implementation of the Needleman-Wunsch algorithm  
  * See https://en.wikipedia.org/wiki/Needleman%E2%80%93Wunsch_algorithm.  
@@ -46,26 +43,28 @@ int nw_compare(int a[], int b[]) {
 
   int len_a = MASTER_SONG_SIZE;
   int len_b = MASTER_SONG_SIZE;
+  char sim[len_a+1][len_b+1];
 
   //Fill first row of matrix
-  for (int i=1;i<len_a+1;i++) olds[i] = i*SKIP_PENALTY;
-  olds[0] = 0;
+  for (int i=1;i<len_a+1;i++) sim[i][0] = i*SKIP_PENALTY;
 
-  //Iterate through each row and column and find the value of each cell.
-  for (int i=1; i < len_a+1; i++) {
-    news[0] = i*SKIP_PENALTY;
-    for (int j=1; j < len_b+1; j++) {
-      news[j] = max_of_3(olds[j]   + SKIP_PENALTY, //Add space to row sequence.
-                         news[j-1] + SKIP_PENALTY,  //Add space to column sequence.
-                         olds[j-1] + match(a[i-1], b[j-1])); //Take new note from each.
-    }
-    char *tmp = olds;
-    olds = news;
-    news = tmp;
+  //Fill first column of matrix
+  for (int j=0;j<len_b+1;j++) {
+    sim[0][j] = j*SKIP_PENALTY;
   }
 
+  //Iterate through each row and column and find the value of each cell.
+  for (int i=1;i<len_a+1;i++) {
+    for (int j=1;j<len_b+1;j++) {
+      sim[i][j] = max_of_3(sim[i-1][j] + SKIP_PENALTY, //Add space to row sequence.
+                          sim[i][j-1] + SKIP_PENALTY,  //Add space to column sequence.
+                          sim[i-1][j-1] + match(a[i-1], b[j-1])); //Take new note from each.
+    }
+  }
+
+
   if (caught) return -100;
-  return olds[len_b]; //Return last cell in last row
+  return sim[len_a][len_b]; //Return last cell in last row
 }
 
 

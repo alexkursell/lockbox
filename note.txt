@@ -1,0 +1,4 @@
+Note that Rolland told us to add:
+
+He said that this project was above average difficulty, but that our code line count would not
+necessarily reflect that.

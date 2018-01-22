@@ -1,0 +1,317 @@
+[33mcommit 2adf46e9c746c8b33f3718c390c6d5f7fa747aac[m
+Author: Alex Kursell <alexkursell@gmail.com>
+Date:   Thu Nov 23 10:53:20 2017 -0500
+
+    Added note that Rolland told us to add.
+
+[33mcommit c2391b0d640d311ecf30cbe6f95377ee5991a9c2[m
+Author: Alex Kursell <alexkursell@gmail.com>
+Date:   Thu Nov 23 10:40:19 2017 -0500
+
+    Changed locking behavior to only switch lock if key tune detected.
+
+[33mcommit 756e654e544db637e87b142d8a7cd9e8ab85b16e[m
+Merge: a4df7e8 a859a15
+Author: Alex Kursell <alexkursell@gmail.com>
+Date:   Thu Nov 23 10:32:52 2017 -0500
+
+    Merge remote-tracking branch 'origin/master'
+    
+    Merge David's comments and my code changes.
+
+[33mcommit a4df7e8a9f6275e5fff02712eae104a0a7d80522[m
+Author: Alex Kursell <alexkursell@gmail.com>
+Date:   Thu Nov 23 10:32:48 2017 -0500
+
+    Revert needleman-wunch optimizations.
+
+[33mcommit a859a15cbffb42fa7e9909c90d5142c37120a9d4[m
+Author: dsspenle <dsspenle@uwaterloo.ca>
+Date:   Thu Nov 23 10:31:34 2017 -0500
+
+    Commented process function
+
+[33mcommit 07ed22b6f7add253b447fff048a527d04520098e[m
+Author: Alex Kursell <alexkursell@gmail.com>
+Date:   Wed Nov 22 17:56:53 2017 -0500
+
+    Comments, cleaned code, tweaked NW algorithm.
+
+[33mcommit 0f11c51627974ac6921189a0af7d1f53c5971e64[m
+Author: Alex Kursell <alexkursell@gmail.com>
+Date:   Wed Nov 22 14:32:22 2017 -0500
+
+    Comments.
+
+[33mcommit 6346c7e8175dca6dfd00ef28455de4cb42ae5088[m
+Author: dsspenle <dsspenle@uwaterloo.ca>
+Date:   Wed Nov 22 13:41:50 2017 -0500
+
+    Added new algorithm
+
+[33mcommit 519a434b66590517c95bb79b7094bac4aafbe6ba[m
+Author: Alex Kursell <alexkursell@gmail.com>
+Date:   Tue Nov 21 12:13:19 2017 -0500
+
+    Moved more things to macrodefines. Removed some unused variables.
+
+[33mcommit 7de2e55823b440f96a3e7df5d60579bd51c7d52f[m
+Author: Alex Kursell <alexkursell@gmail.com>
+Date:   Tue Nov 21 10:21:55 2017 -0500
+
+    Moved many constants into macrodefines.
+
+[33mcommit 8eddfa8225ba1797225ed9fc4f9652bd156678b4[m
+Author: Alex Kursell <alexkursell@gmail.com>
+Date:   Mon Nov 20 18:02:44 2017 -0500
+
+    It's 6:00 and I'm ready to go home. Call it a day!
+
+[33mcommit 70663f9fe2b5536cbea9388018802ef8865b28ca[m
+Author: Alex Kursell <alexkursell@gmail.com>
+Date:   Mon Nov 20 17:43:00 2017 -0500
+
+    It works for Alex at least.
+
+[33mcommit a6407ba33ec2aceb24c3a0d6df8750d47587ab05[m
+Author: Alex Kursell <alexkursell@gmail.com>
+Date:   Mon Nov 20 14:08:43 2017 -0500
+
+    Added note buffers and began adding connection to distance function.
+
+[33mcommit bead1fc95df11f5a052ea32c7dcbee7532561519[m
+Author: Alex Kursell <alexkursell@gmail.com>
+Date:   Sun Nov 19 17:29:30 2017 -0500
+
+    Note detection works now.
+
+[33mcommit 52ed999b36342eb86a1345b2387f9b49adc4afee[m
+Author: Alex Kursell <alexkursell@gmail.com>
+Date:   Thu Nov 16 11:51:32 2017 -0500
+
+    Improved note detection. Cleaned code.
+
+[33mcommit b854fcff3ecf79a90d05f0b5862d58528109472e[m
+Author: j386wu <j386wu@edu.uwaterloo.ca>
+Date:   Tue Nov 14 12:30:17 2017 -0500
+
+    code for tempo
+    `
+
+[33mcommit 8709f3f82a5a63f5737070e0437a64c0270557ad[m
+Author: Jianying Wu <lucy.wu@uwaterloo.ca>
+Date:   Tue Nov 14 03:01:01 2017 -0500
+
+    Add new directory
+
+[33mcommit 3692cbeca3f099fa47ff43cadea4d2d34acbd87f[m
+Author: Alex Kursell <alexkursell@gmail.com>
+Date:   Mon Nov 13 14:08:28 2017 -0500
+
+    converted rainbow display to use notes
+
+[33mcommit 14c456c91b38126c67f2082ecbd7481e47598090[m
+Author: Alex Kursell <alexkursell@gmail.com>
+Date:   Mon Nov 13 13:34:54 2017 -0500
+
+    added initial rainbow frequency display
+
+[33mcommit 6b8c26ee8a248564eaad8cf13265fcb76bba6f46[m
+Author: David Spenler <dsspenle@edu.uwaterloo.ca>
+Date:   Sun Nov 12 15:54:55 2017 -0500
+
+    Fixed phantom inputs
+
+[33mcommit 1761e9944b753fec14f75b35bb86deedfec39e79[m
+Author: David Spenler <dsspenle@edu.uwaterloo.ca>
+Date:   Sun Nov 12 14:37:23 2017 -0500
+
+    Fixed phantom input glitch
+
+[33mcommit 541e9c0f7507baef0ff72be0c70f10bc2aa7d538[m
+Author: j386wu <j386wu@edu.uwaterloo.ca>
+Date:   Thu Nov 9 13:31:18 2017 -0500
+
+    newFreq.c
+
+[33mcommit 20fc067daa3dcf42f384d23b32d7cca52458c746[m
+Author: Alex Kursell <alexkursell@gmail.com>
+Date:   Thu Nov 9 12:33:13 2017 -0500
+
+    Switched freq detection to use analogRead
+
+[33mcommit 2ec90a569d0c74ef01b24c89ddd0ba0f6a7b4a47[m
+Author: Alex Kursell <alexkursell@gmail.com>
+Date:   Thu Nov 9 12:16:04 2017 -0500
+
+    misc changes
+
+[33mcommit b74c6d643c4f8c009e1d6f45333a21d2fb9b0223[m
+Author: Alex Kursell <alexkursell@gmail.com>
+Date:   Thu Nov 9 11:53:29 2017 -0500
+
+    Detach servo when not in use to prevent crazy behavior
+
+[33mcommit 42fd8b1cfac5392d8a652215fc808238587f18de[m
+Author: Alex Kursell <alexkursell@gmail.com>
+Date:   Thu Nov 9 11:20:28 2017 -0500
+
+    Added frequency library files
+
+[33mcommit 1022b0d1cf6381382ff5cbfc491bd670970d6b14[m
+Author: Alex Kursell <alexkursell@gmail.com>
+Date:   Thu Nov 9 11:14:10 2017 -0500
+
+    Added some header comments
+
+[33mcommit 3d8be337a6336f6ca8f46690a23b1c73bfb123b0[m
+Author: David Spenler <dsspenle@edu.uwaterloo.ca>
+Date:   Thu Nov 9 11:08:25 2017 -0500
+
+    Changed main folder name
+
+[33mcommit 48519e470075f336f995a699874afe0f4459bd75[m
+Merge: cae10d0 4afd5e0
+Author: David Spenler <dsspenle@edu.uwaterloo.ca>
+Date:   Thu Nov 9 10:59:42 2017 -0500
+
+    Merge branch 'master' of https://git.uwaterloo.ca/se101-f17/se101-f17-group-16
+    
+    Nothing special
+
+[33mcommit cae10d0780150758a2e372d30679b40556eed81f[m
+Author: David Spenler <dsspenle@edu.uwaterloo.ca>
+Date:   Thu Nov 9 10:59:26 2017 -0500
+
+    test
+
+[33mcommit 4afd5e050128c5130ebff4a80cf72561c26daba0[m
+Author: Alex Kursell <alexkursell@gmail.com>
+Date:   Thu Nov 9 10:58:28 2017 -0500
+
+    Added servo and led libs
+
+[33mcommit 6f4033dbb1986df49a387f2f3118d7102c33c741[m
+Author: David Spenler <dsspenle@edu.uwaterloo.ca>
+Date:   Thu Nov 9 10:52:28 2017 -0500
+
+    removed header declarations
+
+[33mcommit e993a10baada6f3f2b805a32279406ae33d44010[m
+Author: David Spenler <dsspenle@edu.uwaterloo.ca>
+Date:   Thu Nov 9 10:51:04 2017 -0500
+
+    Added main
+
+[33mcommit 88330c900ffff103ed9a9c26dfec00552f8a8ade[m
+Merge: 05903e9 555f05e
+Author: Alex Kursell <alexkursell@gmail.com>
+Date:   Thu Nov 2 14:12:16 2017 -0400
+
+    Merge branch 'master' of git.uwaterloo.ca:se101-f17/se101-f17-group-16
+    
+    merge
+
+[33mcommit 05903e9daf67148304ab9bee33bc77ba6d63a2d4[m
+Author: Alex Kursell <alexkursell@gmail.com>
+Date:   Thu Nov 2 14:11:22 2017 -0400
+
+    Update fhttest
+
+[33mcommit 555f05e1a461e1d89d1f17224514c9bbf90eee54[m
+Author: David Spenler <dsspenle@edu.uwaterloo.ca>
+Date:   Thu Nov 2 12:25:53 2017 -0400
+
+    There were 2 ledtest directories for some reason, removed one
+
+[33mcommit cd379fb07df54ec8de527d19912c256e88565513[m
+Author: David Spenler <dsspenle@edu.uwaterloo.ca>
+Date:   Thu Nov 2 12:16:40 2017 -0400
+
+    Added LED testing program
+
+[33mcommit 0b4b330ea0c624de9fbdf2dd6c1739729b2a158f[m
+Author: David Spenler <dsspenle@edu.uwaterloo.ca>
+Date:   Thu Oct 26 12:09:16 2017 -0400
+
+    Cleaned up formatting gore
+
+[33mcommit 8f63dfbebb2974e406c81d05c13e8c122191cf22[m
+Merge: 7241230 50db71d
+Author: David Spenler <dsspenle@edu.uwaterloo.ca>
+Date:   Thu Oct 26 12:05:07 2017 -0400
+
+    Merge branch 'master' of https://git.uwaterloo.ca/se101-f17/se101-f17-group-16
+
+[33mcommit 7241230dde47f870eb191ebd32d2a1d193e896b7[m
+Author: David Spenler <dsspenle@edu.uwaterloo.ca>
+Date:   Thu Oct 26 12:04:51 2017 -0400
+
+    Moved rhythmtest to its own dir under tests
+
+[33mcommit 50db71d994f1ec89ddaf9dc3e19f3bba162de7ef[m
+Author: Alex Kursell <alexkursell@gmail.com>
+Date:   Thu Oct 26 12:02:44 2017 -0400
+
+    Trying to remove tests.
+
+[33mcommit 8a146c4314452982f32a3b3f67b2724b77887a30[m
+Author: Alex Kursell <alexkursell@gmail.com>
+Date:   Thu Oct 26 11:57:57 2017 -0400
+
+    Changed 'tests' to src. Added frequency detection test.
+
+[33mcommit 27f5384e3bf7a0e3456f300afc57266388bbbbec[m
+Merge: f48d5c8 5388c49
+Author: Alex Kursell <alexkursell@gmail.com>
+Date:   Thu Oct 26 11:56:38 2017 -0400
+
+    Merge branch 'master' of git.uwaterloo.ca:se101-f17/se101-f17-group-16
+
+[33mcommit 5388c49e96bfd817c0b6554d37553f129677a8ad[m
+Author: David Spenler <dsspenle@edu.uwaterloo.ca>
+Date:   Thu Oct 26 11:56:23 2017 -0400
+
+    Added rhythm tests
+
+[33mcommit f48d5c82a29f9d7ea8e4f240665ac52da47657f2[m
+Author: Alex Kursell <alexkursell@gmail.com>
+Date:   Thu Oct 26 11:04:24 2017 -0400
+
+    Refined multiple knock detection.
+
+[33mcommit 59443eadf9521b83ee170754b2e842847ecc330e[m
+Author: Alex Kursell <alexkursell@gmail.com>
+Date:   Thu Oct 26 10:07:38 2017 -0400
+
+    Added box knock test for prototype.
+
+[33mcommit c29f7cebc829d45b358ba17b4b612ea5aae85b67[m
+Author: Alex Kursell <alexkursell@gmail.com>
+Date:   Wed Oct 25 12:48:50 2017 -0400
+
+    Cleaned up servo test.
+
+[33mcommit 222a162463cdd11d7adbf84c665322f550201eca[m
+Author: Alex Kursell <alexkursell@gmail.com>
+Date:   Tue Oct 24 10:09:04 2017 -0400
+
+    Added servo test.
+
+[33mcommit 07940f9315ee70e6caa4349da27297991b59c8f9[m
+Author: Rollen D'Souza <rs2dsouz@uwaterloo.ca>
+Date:   Wed Oct 18 00:03:27 2017 -0400
+
+    proposal response.
+
+[33mcommit 622d8d7745a1c891a5b3c94fd6128df9403bff6d[m
+Author: Alex Kursell <alexkursell@gmail.com>
+Date:   Wed Oct 11 20:03:36 2017 -0400
+
+    Added first draft of proposal
+
+[33mcommit 77c29259e9a61587df06110dccf5bb2d09057cce[m
+Author: Rollen D'Souza <rs2dsouza@uwaterloo.ca>
+Date:   Thu Oct 5 13:45:57 2017 -0400
+
+    Add readme.md

@@ -21,7 +21,7 @@ int closest(int a, int b, int c) {
  */
 int match(int a, int b) {
   if (a-b == 0) return 5;
-  return fabs(a-b)*-1+1;
+  return (fabs(a-b))*-1 + 1;
 }
 
 /*
